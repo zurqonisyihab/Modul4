@@ -32,31 +32,31 @@ public class MyConnection {
         Matakuliah matakuliah;
         ArrayList<Matakuliah> matakuiahList = new ArrayList<>();
         MyConnection myConnection = new MyConnection();
-        Connection con = myConnection.getConnection();
 
-        String selectQuery = "Select * FROM matakuliah ";
-        Statement statement;
-        ResultSet resultSet;
-
-        try {
-            statement = con.createStatement();
-            resultSet = statement.executeQuery(selectQuery);
-            while (resultSet.next()) {
-                matakuliah = new Matakuliah(
-                        resultSet.getInt("id_matakuliah"),
-                        resultSet.getString("nama_matakuliah"),
-                        resultSet.getString("singkatan_matakuliah"),
-                        resultSet.getString("nama_dosen"),
-                        resultSet.getString("kontak_dosen"),
-                        resultSet.getBoolean("aktif")
-                );
-                matakuiahList.add(matakuliah);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
         for (Matakuliah value : matakuiahList) {
-            System.out.println(value.getIdMataKuliah());
+            System.out.println(value.getIdMataKuliah());Connection con = myConnection.getConnection();
+
+            String selectQuery = "Select * FROM matakuliah ";
+            Statement statement;
+            ResultSet resultSet;
+
+            try {
+                statement = con.createStatement();
+                resultSet = statement.executeQuery(selectQuery);
+                while (resultSet.next()) {
+                    matakuliah = new Matakuliah(
+                            resultSet.getInt("id_matakuliah"),
+                            resultSet.getString("nama_matakuliah"),
+                            resultSet.getString("singkatan_matakuliah"),
+                            resultSet.getString("nama_dosen"),
+                            resultSet.getString("kontak_dosen"),
+                            resultSet.getBoolean("aktif")
+                    );
+                    matakuiahList.add(matakuliah);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
             System.out.println("\t");
             System.out.println(value.getSingkatanMatakuliah());
             System.out.println("\t");
