@@ -15,11 +15,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class MatakuliahRead extends JFrame {
-    public JTable matakuliahTable;
+
     public JPanel panel1;
+    public JTable matakuliahTable;
 
     public void createUIComponents() {
-
         Matakuliah matakuliah;
         ArrayList<Matakuliah> matakuliahList = new ArrayList<>();
         MyConnection myConnection = new MyConnection();
@@ -28,7 +28,6 @@ public class MatakuliahRead extends JFrame {
         String selectQuery = "Select * FROM matakuliah ";
         Statement statement;
         ResultSet resultSet;
-
         try {
             statement = con.createStatement();
             resultSet = statement.executeQuery(selectQuery);
@@ -60,16 +59,14 @@ public class MatakuliahRead extends JFrame {
             TableModel tableModel = new DefaultTableModel(row, matakuliahHeader);
             matakuliahTable = new JTable(tableModel);
         }
+
         public static void main(String[] args) {
-                    MatakuliahRead matakuliahRead = new MatakuliahRead();
-                    matakuliahRead.setContentPane(new MatakuliahRead().panel1);
-                    matakuliahRead.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    matakuliahRead.createUIComponents();
-                    matakuliahRead.pack();
-                    matakuliahRead.setLocationRelativeTo(null);
-                    matakuliahRead.setVisible(true);
-
-
-        // TODO: place custom component creation code here
+            MatakuliahRead matakuliahRead = new MatakuliahRead();
+            matakuliahRead.setContentPane(new MatakuliahRead().panel1);
+            matakuliahRead.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            matakuliahRead.createUIComponents();
+            matakuliahRead.pack();
+            matakuliahRead.setLocationRelativeTo(null);
+            matakuliahRead.setVisible(true);
     }
 }

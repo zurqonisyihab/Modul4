@@ -32,9 +32,7 @@ public class MyConnection {
         Matakuliah matakuliah;
         ArrayList<Matakuliah> matakuiahList = new ArrayList<>();
         MyConnection myConnection = new MyConnection();
-
-        for (Matakuliah value : matakuiahList) {
-            System.out.println(value.getIdMataKuliah());Connection con = myConnection.getConnection();
+        Connection con = myConnection.getConnection();
 
             String selectQuery = "Select * FROM matakuliah ";
             Statement statement;
@@ -57,6 +55,8 @@ public class MyConnection {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+        for (Matakuliah value : matakuiahList) {
+            System.out.println(value.getIdMataKuliah());
             System.out.println("\t");
             System.out.println(value.getSingkatanMatakuliah());
             System.out.println("\t");
